@@ -59,35 +59,59 @@
 #     tim.color(random.choice(colours))
 #     draw_shape(shape_size_n)
 
-#***************DRAW RANDOM WALK ***************#
+#***************DRAW RANDOM WALK :( Final Code )***************#
+# import turtle as t
+# import random
+
+# tim = t.Turtle()
+# tim.pensize(5)
+# tim.speed("fastest")
+
+# directions = [0, 90, 180, 270]
+
+# t.colormode(255)
+# def random_color():
+#     r = random.randint(0, 255)
+#     g = random.randint(0, 255)
+#     b = random.randint(0, 255)
+#     return (r, g, b)
+
+# for _ in range(200):
+#     tim.color(random_color())
+#     tim.forward(30)
+#     tim.setheading(random.choice(directions))
+
+# t.mainloop()
+
+#******************** Turtle Challenge : DRAW a Spirograph ***************#
 import turtle as t
 import random
 
-# Setup the turtle
+# Setup turtle and speed
 tim = t.Turtle()
-tim.pensize(5)
 tim.speed("fastest")
-
-# Define directions (0=East, 90=North, 180=West, 270=South)
-
-directions = [0, 90, 180, 270]
-
-# Generate random RGB colors directly 
-
 t.colormode(255)
+
+# Generate a random RGB color tuple
 def random_color():
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     return (r, g, b)
 
-# Random Walk Loop
+def draw_spirograph(size_of_gap):
+    # Calculate the exact number of circles needed to complete a 360-degree rotation
 
-for _ in range(200):
-    tim.color(random_color())
-    tim.forward(30)
-    tim.setheading(random.choice(directions))
+    for _ in range(int(360 / size_of_gap)):
+        tim.color(random_color())
+        tim.circle(100) 
+        
+        tim.setheading(tim.heading() + size_of_gap)
 
-# Keep window open
-t.mainloop()
+
+draw_spirograph(5)
+
+screen = t.Screen()
+screen.exitonclick()
+
 
